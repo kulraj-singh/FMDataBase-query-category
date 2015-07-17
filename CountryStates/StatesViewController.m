@@ -8,6 +8,7 @@
 
 #import "StatesViewController.h"
 #import "StateModel.h"
+#import "CountryModel.h"
 
 @interface StatesViewController ()<UITableViewDataSource>
 
@@ -18,12 +19,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.navigationItem.title = @"States";
+    [self showCountry];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)showCountry
+{
+    self.navigationItem.title = self.country.name;
+    
+    //show country flag
+    NSString *imageName = [NSString stringWithFormat:@"CountryPicker.bundle/%@", _country.isoCode2];
+    UIImage *image = [UIImage imageNamed:imageName];
+    
+    //create button
+    UIImageView *imageFlag = [[UIImageView alloc]initWithImage:image];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:imageFlag];
 }
 
 #pragma mark - table view data source

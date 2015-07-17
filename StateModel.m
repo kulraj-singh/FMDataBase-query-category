@@ -17,7 +17,10 @@
         self.Id = [resultSet stringForColumn:colZoneId];
         self.countryId = [resultSet stringForColumn:colCountryId];
         self.code = [resultSet stringForColumn:colCode];
-        self.name = [resultSet stringForColumn:colName];
+        
+        //work for special characters
+        NSString *encodedString = [resultSet stringForColumn:colName];
+        self.name = [NSString stringWithUTF8String:[encodedString cStringUsingEncoding:[NSString defaultCStringEncoding]]];
     }
     return self;
 }

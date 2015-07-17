@@ -74,13 +74,14 @@
     NSMutableArray *states = [_db getRecordsWithQuery:statesQuery targetObject:[[StateModel alloc]init]];
     
     if (states.count == 0) {
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"There are nop states in the selected country" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"There are no states in the selected country" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
         [alert show];
         return;
     }
     
     StatesViewController *statesVc = [[StatesViewController alloc]initWithNibName:@"StatesViewController" bundle:nil];
     statesVc.states = states;
+    statesVc.country = selectedCountry;
     [self.navigationController pushViewController:statesVc animated:YES];
 }
 

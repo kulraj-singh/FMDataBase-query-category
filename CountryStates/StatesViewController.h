@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+@class CountryModel;
 
 @interface StatesViewController : UIViewController
 
 @property (strong, nonatomic) NSMutableArray *states;
+@property (strong, nonatomic) CountryModel *country;
 
 @end
